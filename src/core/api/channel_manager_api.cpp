@@ -68,7 +68,6 @@ otError otChannelManagerRequestChannelSelect(otInstance *aInstance, bool aSkipQu
 {
     return AsCoreType(aInstance).Get<Utils::ChannelManager>().RequestNetworkChannelSelect(aSkipQualityCheck);
 }
-#endif
 
 void otChannelManagerSetAutoChannelSelectionEnabled(otInstance *aInstance, bool aEnabled)
 {
@@ -79,6 +78,7 @@ bool otChannelManagerGetAutoChannelSelectionEnabled(otInstance *aInstance)
 {
     return AsCoreType(aInstance).Get<Utils::ChannelManager>().GetAutoNetworkChannelSelectionEnabled();
 }
+#endif // OPENTHREAD_CONFIG_CHANNEL_MONITOR_ENABLE
 #endif // OPENTHREAD_FTD
 
 #if OPENTHREAD_CONFIG_CHANNEL_MANAGER_CSL_CHANNEL_SELECT_ENABLE
@@ -100,6 +100,7 @@ bool otChannelManagerGetAutoCslChannelSelectionEnabled(otInstance *aInstance)
 }
 #endif
 
+#if OPENTHREAD_CONFIG_CHANNEL_MONITOR_ENABLE
 otError otChannelManagerSetAutoChannelSelectionInterval(otInstance *aInstance, uint32_t aInterval)
 {
     return AsCoreType(aInstance).Get<Utils::ChannelManager>().SetAutoChannelSelectionInterval(aInterval);
@@ -109,6 +110,7 @@ uint32_t otChannelManagerGetAutoChannelSelectionInterval(otInstance *aInstance)
 {
     return AsCoreType(aInstance).Get<Utils::ChannelManager>().GetAutoChannelSelectionInterval();
 }
+#endif // OPENTHREAD_CONFIG_CHANNEL_MONITOR_ENABLE
 
 uint32_t otChannelManagerGetSupportedChannels(otInstance *aInstance)
 {
